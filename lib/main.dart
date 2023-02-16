@@ -28,6 +28,8 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+bool isChecked = false;
+
 int quantity1 = 0,
     quantity2 = 0,
     quantity3 = 0,
@@ -59,29 +61,29 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Text("Fajita Taco Counter: $counter1",
                 style: const TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 10.0,
                 )),
             Text("Hotdog Counter: $counter2",
                 style: const TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 10.0,
                 )),
             Text("Wrap Counter: $counter3",
                 style: const TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 10.0,
                 )),
             Text("Monster Counter: $counter4",
                 style: const TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 10.0,
                 )),
             Text("Coke Counter: $counter5",
                 style: const TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 10.0,
                 )),
             Text("Water Counter: $counter6",
                 style: const TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 10.0,
                 )),
-            const SizedBox(height: 50),
+            const SizedBox(height: 25),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -449,74 +451,79 @@ class _TotalScreenState extends State<TotalScreen> {
                               givenmoney += 1;
                             });
                           },
-                          child: const Text("\$1"),
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0))),
-                          )),
+                          ),
+                          child: const Text("\$1")),
                       OutlinedButton(
                           onPressed: () {
                             setState(() {
                               givenmoney += 5;
                             });
                           },
-                          child: const Text("\$5"),
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0))),
-                          )),
+                          ),
+                          child: const Text("\$5")),
                       OutlinedButton(
                           onPressed: () {
                             setState(() {
                               givenmoney += 10;
                             });
                           },
-                          child: const Text("\$10"),
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0))),
-                          )),
+                          ),
+                          child: const Text("\$10")),
                       OutlinedButton(
                           onPressed: () {
                             setState(() {
                               givenmoney += 20;
                             });
                           },
-                          child: const Text("\$20"),
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0))),
-                          )),
+                          ),
+                          child: const Text("\$20")),
                       OutlinedButton(
                           onPressed: () {
                             setState(() {
                               givenmoney += 50;
                             });
                           },
-                          child: const Text("\$50"),
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0))),
-                          )),
+                          ),
+                          child: const Text("\$50")),
                       OutlinedButton(
                           onPressed: () {
                             setState(() {
                               givenmoney += 100;
                             });
                           },
-                          child: const Text("\$100"),
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0))),
-                          ))
+                          ),
+                          child: const Text("\$100"))
                     ],
                   )),
+              Text("Card Total: \$${total + ((total * .026) + .10)}",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                  )),
+              SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
