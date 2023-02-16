@@ -519,11 +519,12 @@ class _TotalScreenState extends State<TotalScreen> {
                           child: const Text("\$100"))
                     ],
                   )),
-              Text("Card Total: \$${total + ((total * .026) + .10)}",
-                  style: TextStyle(
+              Text(
+                  "Card Total: \$${(total + ((total * .026) + (total * .015) + .10)).toStringAsFixed(2)}",
+                  style: const TextStyle(
                     fontSize: 20.0,
                   )),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
