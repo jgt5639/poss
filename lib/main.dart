@@ -35,16 +35,12 @@ int quantity1 = 0,
     quantity3 = 0,
     quantity4 = 0,
     quantity5 = 0,
-    quantity6 = 0;
+    quantity6 = 0,
+    quantitychips = 0,
+    quantityHotChoco = 0,
+    quantityTea = 0;
 
 int total = 0, grandtotal = 0, givenmoney = 0;
-
-int counter1 = 0,
-    counter2 = 0,
-    counter3 = 0,
-    counter4 = 0,
-    counter5 = 0,
-    counter6 = 0;
 
 class _MyHomePageState extends State<MyHomePage> {
   bool sele = false;
@@ -56,282 +52,399 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Total Money Made: $grandtotal"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Fajita Taco Counter: $counter1",
-                style: const TextStyle(
-                  fontSize: 10.0,
-                )),
-            Text("Hotdog Counter: $counter2",
-                style: const TextStyle(
-                  fontSize: 10.0,
-                )),
-            Text("Wrap Counter: $counter3",
-                style: const TextStyle(
-                  fontSize: 10.0,
-                )),
-            Text("Monster Counter: $counter4",
-                style: const TextStyle(
-                  fontSize: 10.0,
-                )),
-            Text("Coke Counter: $counter5",
-                style: const TextStyle(
-                  fontSize: 10.0,
-                )),
-            Text("Water Counter: $counter6",
-                style: const TextStyle(
-                  fontSize: 10.0,
-                )),
-            const SizedBox(height: 25),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+        child: SingleChildScrollView(
+          child: Scrollbar(
+            thumbVisibility: true,
+            child: ListView(
+              shrinkWrap: true,
               children: [
-                Scrollbar(
-                    child: Column(children: [
-                  ListTile(
+                ListTile(
+                  horizontalTitleGap: 50,
+                  dense: false,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      side: const BorderSide(width: 2)),
+                  leading: Image.asset('assets/FajitaTaco.jpg'),
+                  title: const Text(
+                    "Taco",
+                    style: TextStyle(fontSize: 35),
+                  ),
+                  subtitle:
+                      const Text(' \$8.00', style: TextStyle(fontSize: 25)),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        iconSize: 30,
+                        icon: const Icon(Icons.remove),
+                        onPressed: () {
+                          setState(() {
+                            if (quantity1 < 0 || quantity1 == 0) {
+                              quantity1 = 0;
+                            } else {
+                              quantity1--;
+                            }
+                          });
+                        },
+                      ),
+                      Text(quantity1.toString(),
+                          style: TextStyle(fontSize: 35)),
+                      IconButton(
+                        iconSize: 30,
+                        icon: const Icon(Icons.add),
+                        onPressed: () {
+                          setState(() {
+                            quantity1++;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                ListTile(
                     horizontalTitleGap: 50,
                     dense: false,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                         side: const BorderSide(width: 2)),
-                    leading: Image.asset('assets/FajitaTaco.jpg'),
+                    leading: Image.asset(
+                      'assets/Hotdog.jpg',
+                      width: 80,
+                    ),
                     title: const Text(
-                      "Taco",
+                      "Hotdog",
                       style: TextStyle(fontSize: 35),
                     ),
                     subtitle:
-                        const Text(' \$8.00', style: TextStyle(fontSize: 25)),
+                        const Text('\$5.00', style: TextStyle(fontSize: 25)),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         IconButton(
+                          iconSize: 30,
                           icon: const Icon(Icons.remove),
                           onPressed: () {
                             setState(() {
-                              if (quantity1 < 0 || quantity1 == 0) {
-                                quantity1 = 0;
+                              if (quantity2 < 0 || quantity2 == 0) {
+                                quantity2 = 0;
                               } else {
-                                quantity1--;
+                                quantity2--;
                               }
                             });
                           },
                         ),
-                        Text(quantity1.toString()),
+                        Text(quantity2.toString(),
+                            style: TextStyle(fontSize: 35)),
                         IconButton(
+                          iconSize: 30,
                           icon: const Icon(Icons.add),
                           onPressed: () {
                             setState(() {
-                              quantity1++;
+                              quantity2++;
                             });
                           },
                         ),
                       ],
+                    )),
+                ListTile(
+                    horizontalTitleGap: 50,
+                    dense: false,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: const BorderSide(width: 2)),
+                    leading: Image.asset(
+                      'assets/SausageWrap.jpg',
+                      width: 80,
                     ),
-                  ),
-                  ListTile(
-                      horizontalTitleGap: 50,
-                      dense: false,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          side: const BorderSide(width: 2)),
-                      leading: Image.asset(
-                        'assets/Hotdog.jpg',
-                        width: 80,
-                      ),
-                      title: const Text(
-                        "Hotdog",
-                        style: TextStyle(fontSize: 35),
-                      ),
-                      subtitle:
-                          const Text('\$5.00', style: TextStyle(fontSize: 25)),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.remove),
-                            onPressed: () {
-                              setState(() {
-                                if (quantity2 < 0 || quantity2 == 0) {
-                                  quantity2 = 0;
-                                } else {
-                                  quantity2--;
-                                }
-                              });
-                            },
-                          ),
-                          Text(quantity2.toString()),
-                          IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () {
-                              setState(() {
-                                quantity2++;
-                              });
-                            },
-                          ),
-                        ],
-                      )),
-                  ListTile(
-                      horizontalTitleGap: 50,
-                      dense: false,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          side: const BorderSide(width: 2)),
-                      leading: Image.asset(
-                        'assets/SausageWrap.jpg',
-                        width: 80,
-                      ),
-                      title: const Text(
-                        "Wrap",
-                        style: TextStyle(fontSize: 35),
-                      ),
-                      subtitle:
-                          const Text('\$7.00', style: TextStyle(fontSize: 25)),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.remove),
-                            onPressed: () {
-                              setState(() {
-                                if (quantity6 < 0 || quantity6 == 0) {
-                                  quantity6 = 0;
-                                } else {
-                                  quantity6--;
-                                }
-                              });
-                            },
-                          ),
-                          Text(quantity6.toString()),
-                          IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () {
-                              setState(() {
-                                quantity6++;
-                              });
-                            },
-                          ),
-                        ],
-                      )),
-                  ListTile(
-                      horizontalTitleGap: 50,
-                      dense: false,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          side: const BorderSide(width: 2)),
-                      leading: Image.asset('assets/Monster.jpg', width: 80),
-                      title: const Text(
-                        "Monster",
-                        style: TextStyle(fontSize: 35),
-                      ),
-                      subtitle:
-                          const Text('\$4.00', style: TextStyle(fontSize: 25)),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.remove),
-                            onPressed: () {
-                              setState(() {
-                                if (quantity5 < 0 || quantity5 == 0) {
-                                  quantity5 = 0;
-                                } else {
-                                  quantity5--;
-                                }
-                              });
-                            },
-                          ),
-                          Text(quantity5.toString()),
-                          IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () {
-                              setState(() {
-                                quantity5++;
-                              });
-                            },
-                          ),
-                        ],
-                      )),
-                  ListTile(
-                      horizontalTitleGap: 50,
-                      dense: false,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          side: const BorderSide(width: 2)),
-                      leading: Image.asset('assets/Coke.jpg', width: 80),
-                      title: const Text(
-                        "Coke",
-                        style: TextStyle(fontSize: 35),
-                      ),
-                      subtitle:
-                          const Text('\$2.00', style: TextStyle(fontSize: 25)),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.remove),
-                            onPressed: () {
-                              setState(() {
-                                if (quantity3 < 0 || quantity3 == 0) {
-                                  quantity3 = 0;
-                                } else {
-                                  quantity3--;
-                                }
-                              });
-                            },
-                          ),
-                          Text(quantity3.toString()),
-                          IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () {
-                              setState(() {
-                                quantity3++;
-                              });
-                            },
-                          ),
-                        ],
-                      )),
-                  ListTile(
-                      horizontalTitleGap: 50,
-                      dense: false,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          side: const BorderSide(width: 2)),
-                      leading: Image.asset('assets/Water.jpg', width: 80),
-                      title: const Text(
-                        "Water",
-                        style: TextStyle(fontSize: 35),
-                      ),
-                      subtitle:
-                          const Text('\$2.00', style: TextStyle(fontSize: 25)),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.remove),
-                            onPressed: () {
-                              setState(() {
-                                if (quantity4 < 0 || quantity4 == 0) {
-                                  quantity4 = 0;
-                                } else {
-                                  quantity4--;
-                                }
-                              });
-                            },
-                          ),
-                          Text(quantity4.toString()),
-                          IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () {
-                              setState(() {
-                                quantity4++;
-                              });
-                            },
-                          ),
-                        ],
-                      ))
-                ])),
-                const SizedBox(height: 25),
+                    title: const Text(
+                      "Wrap",
+                      style: TextStyle(fontSize: 35),
+                    ),
+                    subtitle:
+                        const Text('\$7.00', style: TextStyle(fontSize: 25)),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.remove),
+                          onPressed: () {
+                            setState(() {
+                              if (quantity6 < 0 || quantity6 == 0) {
+                                quantity6 = 0;
+                              } else {
+                                quantity6--;
+                              }
+                            });
+                          },
+                        ),
+                        Text(quantity6.toString(),
+                            style: TextStyle(fontSize: 35)),
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.add),
+                          onPressed: () {
+                            setState(() {
+                              quantity6++;
+                            });
+                          },
+                        ),
+                      ],
+                    )),
+                ListTile(
+                    horizontalTitleGap: 50,
+                    dense: false,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: const BorderSide(width: 2)),
+                    leading: Image.asset('assets/Chips.jpg', width: 80),
+                    title: const Text(
+                      "Chips",
+                      style: TextStyle(fontSize: 35),
+                    ),
+                    subtitle:
+                        const Text('\$2.00', style: TextStyle(fontSize: 25)),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.remove),
+                          onPressed: () {
+                            setState(() {
+                              if (quantitychips < 0 || quantitychips == 0) {
+                                quantitychips = 0;
+                              } else {
+                                quantitychips--;
+                              }
+                            });
+                          },
+                        ),
+                        Text(quantitychips.toString(),
+                            style: TextStyle(fontSize: 35)),
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.add),
+                          onPressed: () {
+                            setState(() {
+                              quantitychips++;
+                            });
+                          },
+                        ),
+                      ],
+                    )),
+                ListTile(
+                    horizontalTitleGap: 50,
+                    dense: false,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: const BorderSide(width: 2)),
+                    leading: Image.asset('assets/Monster.jpg', width: 80),
+                    title: const Text(
+                      "Monster",
+                      style: TextStyle(fontSize: 35),
+                    ),
+                    subtitle:
+                        const Text('\$4.00', style: TextStyle(fontSize: 25)),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.remove),
+                          onPressed: () {
+                            setState(() {
+                              if (quantity5 < 0 || quantity5 == 0) {
+                                quantity5 = 0;
+                              } else {
+                                quantity5--;
+                              }
+                            });
+                          },
+                        ),
+                        Text(quantity5.toString(),
+                            style: TextStyle(fontSize: 35)),
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.add),
+                          onPressed: () {
+                            setState(() {
+                              quantity5++;
+                            });
+                          },
+                        ),
+                      ],
+                    )),
+                ListTile(
+                    horizontalTitleGap: 50,
+                    dense: false,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: const BorderSide(width: 2)),
+                    leading: Image.asset('assets/HotChocolate.jpg', width: 80),
+                    title: const Text(
+                      "Hot Chocolate",
+                      style: TextStyle(fontSize: 35),
+                    ),
+                    subtitle:
+                        const Text('\$4.00', style: TextStyle(fontSize: 25)),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.remove),
+                          onPressed: () {
+                            setState(() {
+                              if (quantityHotChoco < 0 ||
+                                  quantityHotChoco == 0) {
+                                quantityHotChoco = 0;
+                              } else {
+                                quantityHotChoco--;
+                              }
+                            });
+                          },
+                        ),
+                        Text(quantityHotChoco.toString(),
+                            style: TextStyle(fontSize: 35)),
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.add),
+                          onPressed: () {
+                            setState(() {
+                              quantityHotChoco++;
+                            });
+                          },
+                        ),
+                      ],
+                    )),
+                ListTile(
+                    horizontalTitleGap: 50,
+                    dense: false,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: const BorderSide(width: 2)),
+                    leading: Image.asset('assets/Tea.jpg', width: 80),
+                    title: const Text(
+                      "Tea",
+                      style: TextStyle(fontSize: 35),
+                    ),
+                    subtitle:
+                        const Text('\$3.00', style: TextStyle(fontSize: 25)),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.remove),
+                          onPressed: () {
+                            setState(() {
+                              if (quantityTea < 0 || quantityTea == 0) {
+                                quantityTea = 0;
+                              } else {
+                                quantityTea--;
+                              }
+                            });
+                          },
+                        ),
+                        Text(quantityTea.toString(),
+                            style: TextStyle(fontSize: 35)),
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.add),
+                          onPressed: () {
+                            setState(() {
+                              quantityTea++;
+                            });
+                          },
+                        ),
+                      ],
+                    )),
+                ListTile(
+                    horizontalTitleGap: 50,
+                    dense: false,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: const BorderSide(width: 2)),
+                    leading: Image.asset('assets/Coke.jpg', width: 80),
+                    title: const Text(
+                      "Coke",
+                      style: TextStyle(fontSize: 35),
+                    ),
+                    subtitle:
+                        const Text('\$2.00', style: TextStyle(fontSize: 25)),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.remove),
+                          onPressed: () {
+                            setState(() {
+                              if (quantity3 < 0 || quantity3 == 0) {
+                                quantity3 = 0;
+                              } else {
+                                quantity3--;
+                              }
+                            });
+                          },
+                        ),
+                        Text(quantity3.toString(),
+                            style: TextStyle(fontSize: 35)),
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.add),
+                          onPressed: () {
+                            setState(() {
+                              quantity3++;
+                            });
+                          },
+                        ),
+                      ],
+                    )),
+                ListTile(
+                    horizontalTitleGap: 50,
+                    dense: false,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: const BorderSide(width: 2)),
+                    leading: Image.asset('assets/Water.jpg', width: 80),
+                    title: const Text(
+                      "Water",
+                      style: TextStyle(fontSize: 35),
+                    ),
+                    subtitle:
+                        const Text('\$2.00', style: TextStyle(fontSize: 25)),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.remove),
+                          onPressed: () {
+                            setState(() {
+                              if (quantity4 < 0 || quantity4 == 0) {
+                                quantity4 = 0;
+                              } else {
+                                quantity4--;
+                              }
+                            });
+                          },
+                        ),
+                        Text(quantity4.toString(),
+                            style: TextStyle(fontSize: 35)),
+                        IconButton(
+                          iconSize: 30,
+                          icon: const Icon(Icons.add),
+                          onPressed: () {
+                            setState(() {
+                              quantity4++;
+                            });
+                          },
+                        ),
+                      ],
+                    )),
+                const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -350,14 +463,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             (quantity3 * 2) +
                             (quantity4 * 2) +
                             (quantity5 * 4) +
-                            (quantity6 * 7);
-
-                        counter1 += quantity1;
-                        counter2 += quantity2;
-                        counter3 += quantity6;
-                        counter4 += quantity5;
-                        counter5 += quantity3;
-                        counter6 += quantity4;
+                            (quantity6 * 7) +
+                            (quantitychips * 2) +
+                            (quantityHotChoco * 4) +
+                            (quantityTea * 3);
 
                         grandtotal += total;
 
@@ -370,10 +479,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                     ),
                   ],
-                )
+                ),
+                SizedBox(height: 30)
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -564,6 +674,9 @@ class _TotalScreenState extends State<TotalScreen> {
       quantity4 = 0;
       quantity5 = 0;
       quantity6 = 0;
+      quantitychips = 0;
+      quantityHotChoco = 0;
+      quantityTea = 0;
       total = 0;
       setState(() {});
     });
